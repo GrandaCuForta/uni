@@ -23,12 +23,16 @@ def delete_student(student_id):
 
 
 while true:
-    print("\n1. Add Student")
+    print("\n" + "=" * 32)
+    print("       STUDENT MANAGER")
+    print("=" * 32)
+    print("1. Add Student")
     print("2. View Students")
     print("3. Delete Student")
     print("4. Exit Program")
+    print("=" * 32)
 
-    choice = input("Choose: ")
+    choice = input("Choose an option: ")
 
     if choice == "1":
         name = input("Enter student name: ")
@@ -44,13 +48,27 @@ while true:
 
     elif choice == "2":
         cursor.execute("SELECT * FROM students")
-    
-        for student in cursor.fetchall():
-            print (student)
+        students = cursor.fetchall()
+
+        print("\n" + "-" * 72)
+        print("STUDENTS")
+        print("-" * 72)
+
+        if students:
+            headers = [column[0].upper() for column in cursor.description]
+            print(" | ".join(f"{header:<15}" for header in headers))
+            print("-" * 72)
+            for student in students:
+                print(" | ".join(f"{str(value):<15}" for value in student))
+        else:
+            print("No students found.")
+
+        print("-" * 72)
 
     elif choice == "3":
         student_id = input("Enter student ID: ")
         delete_student(student_id)
 
     elif choice == "4":
+        print("Goodbye!")
         break
