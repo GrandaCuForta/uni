@@ -17,4 +17,8 @@ Programmatūras ieviešanas un uzturēšanas dzīves cikls un procesu automatiz�
 12. **Add delete student feature** - pievienota iespēja dzēst studentu pēc tā ID.
 13. **Improve student display** - uzlabots studentu saraksta attēlojums ar virsrakstiem un sakārtotu tabulas formātu.
 14. **Age error handeling** - pievienota vecuma ievades pārbaude, lai nederīgas vērtības netiktu saglabātas kā skaitlis.
+15. **Move database settings to environment** - datubāzes iestatījumi pārcelti uz vides mainīgajiem, lai konfigurācija būtu elastīgāka.
+16. **README.md dokuments** - README failam pievienots projekta izstrādes vēstures apraksts.
+17. **Move database settings to enviroment fix** - izlabota datubāzes iestatījumu pārcelšanas implementācija.
+18. **README.md dokuments** - papildināts apraksts.
 
