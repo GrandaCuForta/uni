@@ -37,7 +37,14 @@ while true:
     if choice == "1":
         name = input("Enter student name: ")
         email = input("Enter student email: ")
-        age = input("Enter student age: ")
+
+        while True:
+            age = input("Enter student age: ")
+            try:
+                age = int(age)
+                break
+            except ValueError:
+                print("Age must contain numbers only. Please try again.")
 
         sql = """
         INSERT INTO students (name, email, age) VALUES (%s, %s, %s) """
