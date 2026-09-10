@@ -22,3 +22,4 @@ Programmatūras ieviešanas un uzturēšanas dzīves cikls un procesu automatiz�
 17. **Move database settings to enviroment fix** - izlabota datubāzes iestatījumu pārcelšanas implementācija.
 18. **README.md dokuments** - papildināts apraksts.
 
+

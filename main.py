@@ -36,7 +36,12 @@ while true:
 
     if choice == "1":
         name = input("Enter student name: ")
-        email = input("Enter student email: ")
+
+        while True:
+            email = input("Enter student email: ")
+            if "@" in email:
+                break
+            print("Email must contain @. Please try again.")
 
         while True:
             age = input("Enter student age: ")
