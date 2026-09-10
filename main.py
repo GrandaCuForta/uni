@@ -80,7 +80,9 @@ while true:
             age = input("Enter student age: ")
             try:
                 age = int(age)
-                break
+                if 0 <= age <= 120:
+                    break
+                print("Age must be between 0 and 120. Please try again.")
             except ValueError:
                 print("Age must contain numbers only. Please try again.")
 
@@ -146,7 +148,9 @@ while true:
             age = input("Enter new student age: ")
             try:
                 age = int(age)
-                break
+                if 0 <= age <= 120:
+                    break
+                print("Age must be between 0 and 120. Please try again.")
             except ValueError:
                 print("Age must contain numbers only. Please try again.")
 
