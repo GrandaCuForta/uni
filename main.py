@@ -1,6 +1,15 @@
+import logging
+
 import mysql.connector
 from sqlalchemy import true
 from config import *
+
+logging.basicConfig(
+    filename="student_manager.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 connection = mysql.connector.connect(
     host=DB_HOST,
@@ -18,14 +27,17 @@ def delete_student(student_id):
 
     if cursor.rowcount == 0:
         print("Student not found.")
+        logger.warning("Delete failed: student ID %s was not found", student_id)
     else:
         print("Student deleted successfully!")
+        logger.info("Student deleted: ID %s", student_id)
 
 
 def update_student(student_id, name, email, age):
     cursor.execute("SELECT 1 FROM students WHERE id = %s", (student_id,))
     if cursor.fetchone() is None:
         print("Student not found.")
+        logger.warning("Update failed: student ID %s was not found", student_id)
         return
 
     cursor.execute(
@@ -34,6 +46,7 @@ def update_student(student_id, name, email, age):
     )
     if cursor.fetchone() is not None:
         print("This email is already registered.")
+        logger.warning("Update failed: email already registered for student ID %s", student_id)
         return
 
     cursor.execute(
@@ -42,6 +55,7 @@ def update_student(student_id, name, email, age):
     )
     connection.commit()
     print("Student updated successfully!")
+    logger.info("Student updated: ID %s", student_id)
 
 
 while true:
@@ -92,10 +106,12 @@ while true:
         cursor.execute(sql, (name, email, age))
         connection.commit()
         print("Student added successfully!")
+        logger.info("Student added")
 
     elif choice == "2":
         cursor.execute("SELECT * FROM students")
         students = cursor.fetchall()
+        logger.info("Student list viewed")
 
         print("\n" + "-" * 72)
         print("STUDENTS")
@@ -119,6 +135,7 @@ while true:
             delete_student(student_id)
         else:
             print("Deletion cancelled.")
+            logger.info("Student deletion cancelled: ID %s", student_id)
 
     elif choice == "4":
         student_id = input("Enter student ID: ")
@@ -158,4 +175,5 @@ while true:
 
     elif choice == "5":
         print("Goodbye!")
+        logger.info("Program exited")
         break
