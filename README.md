@@ -83,11 +83,17 @@ python -m unittest -v test_validators.py
 16. **README.md dokuments** - README failam pievienots projekta izstrādes vēstures apraksts.
 17. **Move database settings to enviroment fix** - izlabota datubāzes iestatījumu pārcelšanas implementācija.
 18. **README.md dokuments** - papildināts apraksts.
-19. **README.md dokuments** - atjaunināta projekta commit vēstures dokumentācija.
-20. **Email Validation** - pievienota e-pasta pārbaude, kas pieprasa `@` simbola esamību.
-21. **database fix** - datubāzes konfigurācija sākuma stadijā
-22. **Name validation** - pievienota vārda pārbaude, kas nepieļauj tukšu ievadi.
-23. **Delete Validation** - pievienots apstiprinājums pirms studenta dzēšanas.
-24. **Duplicate email checking** - pievienota pārbaude, kas neļauj reģistrēt jau izmantotu e-pasta adresi.
+19. **Email Validation** - pievienota e-pasta pārbaude, kas pieprasa `@` simbola esamību.
+20. **database fix** - izlabota datubāzes konfigurācija.
+21. **Name validation** - pievienota vārda pārbaude, kas nepieļauj tukšu ievadi.
+22. **Delete Validation** - pievienots apstiprinājums pirms studenta dzēšanas.
+23. **Duplicate email checking.** - pievienota pārbaude, kas neļauj reģistrēt jau izmantotu e-pasta adresi.
+24. **Student update feature** - pievienota iespēja mainīt esoša studenta vārdu, e-pastu un vecumu.
+25. **Age range validation** - vecuma ievade ierobežota diapazonā no 0 līdz 120.
+26. **Action logging** - pievienota programmas darbību reģistrēšana failā `student_manager.log`.
+27. **Database connection error handling** - pievienota MySQL savienojuma kļūdu apstrāde ar saprotamu paziņojumu.
+28. **Add unit tests for validation** - pievienoti unit testi vārda, e-pasta un vecuma validācijas pārbaudei.
+29. **Handle invalid menu choice** - pievienota kļūdas apstrāde nederīgai izvēlnes izvēlei.
+30. **Update README setup instructions** - README papildināts ar instalēšanas, datubāzes konfigurācijas, migrāciju, palaišanas un testu instrukcijām.
 
 
