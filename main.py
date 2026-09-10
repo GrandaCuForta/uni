@@ -3,6 +3,7 @@ import logging
 import mysql.connector
 from sqlalchemy import true
 from config import *
+from validators import validate_age, validate_email, validate_name
 
 logging.basicConfig(
     filename="student_manager.log",
@@ -78,13 +79,13 @@ while true:
     if choice == "1":
         while True:
             name = input("Enter student name: ").strip()
-            if name:
+            if validate_name(name):
                 break
             print("Name cannot be empty. Please try again.")
 
         while True:
             email = input("Enter student email: ").strip()
-            if "@" not in email:
+            if not validate_email(email):
                 print("Email must contain @. Please try again.")
                 continue
 
@@ -98,7 +99,7 @@ while true:
             age = input("Enter student age: ")
             try:
                 age = int(age)
-                if 0 <= age <= 120:
+                if validate_age(age):
                     break
                 print("Age must be between 0 and 120. Please try again.")
             except ValueError:
@@ -146,13 +147,13 @@ while true:
 
         while True:
             name = input("Enter new student name: ").strip()
-            if name:
+            if validate_name(name):
                 break
             print("Name cannot be empty. Please try again.")
 
         while True:
             email = input("Enter new student email: ").strip()
-            if "@" not in email:
+            if not validate_email(email):
                 print("Email must contain @. Please try again.")
                 continue
 
@@ -169,7 +170,7 @@ while true:
             age = input("Enter new student age: ")
             try:
                 age = int(age)
-                if 0 <= age <= 120:
+                if validate_age(age):
                     break
                 print("Age must be between 0 and 120. Please try again.")
             except ValueError:
