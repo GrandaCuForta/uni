@@ -35,7 +35,11 @@ while true:
     choice = input("Choose an option: ")
 
     if choice == "1":
-        name = input("Enter student name: ")
+        while True:
+            name = input("Enter student name: ").strip()
+            if name:
+                break
+            print("Name cannot be empty. Please try again.")
 
         while True:
             email = input("Enter student email: ")
