@@ -42,10 +42,16 @@ while true:
             print("Name cannot be empty. Please try again.")
 
         while True:
-            email = input("Enter student email: ")
-            if "@" in email:
-                break
-            print("Email must contain @. Please try again.")
+            email = input("Enter student email: ").strip()
+            if "@" not in email:
+                print("Email must contain @. Please try again.")
+                continue
+
+            cursor.execute("SELECT 1 FROM students WHERE email = %s LIMIT 1", (email,))
+            if cursor.fetchone() is not None:
+                print("This email is already registered. Please try again.")
+                continue
+            break
 
         while True:
             age = input("Enter student age: ")
