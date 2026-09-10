@@ -182,3 +182,7 @@ while true:
         print("Goodbye!")
         logger.info("Program exited")
         break
+
+    else:
+        print("Invalid choice. Please select an option from 1 to 5.")
+        logger.warning("Invalid menu choice: %s", choice)
