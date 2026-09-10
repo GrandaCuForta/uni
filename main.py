@@ -11,14 +11,18 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-connection = mysql.connector.connect(
-    host=DB_HOST,
-    user=DB_USER,
-    password=DB_PASSWORD,
-    database=DB_NAME
-)
-
-cursor = connection.cursor()
+try:
+    connection = mysql.connector.connect(
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        database=DB_NAME
+    )
+    cursor = connection.cursor()
+except mysql.connector.Error as error:
+    print("Database connection failed. Check MySQL and your configuration.")
+    logger.error("Database connection failed: %s", error)
+    raise SystemExit(1)
 
 
 def delete_student(student_id):
