@@ -21,5 +21,11 @@ Programmatūras ieviešanas un uzturēšanas dzīves cikls un procesu automatiz�
 16. **README.md dokuments** - README failam pievienots projekta izstrādes vēstures apraksts.
 17. **Move database settings to enviroment fix** - izlabota datubāzes iestatījumu pārcelšanas implementācija.
 18. **README.md dokuments** - papildināts apraksts.
+19. **README.md dokuments** - atjaunināta projekta commit vēstures dokumentācija.
+20. **Email Validation** - pievienota e-pasta pārbaude, kas pieprasa `@` simbola esamību.
+21. **database fix** - datubāzes konfigurācija sākuma stadijā
+22. **Name validation** - pievienota vārda pārbaude, kas nepieļauj tukšu ievadi.
+23. **Delete Validation** - pievienots apstiprinājums pirms studenta dzēšanas.
+24. **Duplicate email checking** - pievienota pārbaude, kas neļauj reģistrēt jau izmantotu e-pasta adresi.
 
 
