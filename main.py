@@ -83,7 +83,11 @@ while true:
 
     elif choice == "3":
         student_id = input("Enter student ID: ")
-        delete_student(student_id)
+        confirmation = input("Are you sure you want to delete this student? (y/n): ")
+        if confirmation.lower() in ("y", "yes"):
+            delete_student(student_id)
+        else:
+            print("Deletion cancelled.")
 
     elif choice == "4":
         print("Goodbye!")
