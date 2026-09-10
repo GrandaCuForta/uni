@@ -1,6 +1,68 @@
 # uni
 Programmatūras ieviešanas un uzturēšanas dzīves cikls un procesu automatizācija
 
+## Projekta palaišana
+
+### Priekšnosacījumi
+
+- Python 3.13 vai jaunāks.
+- Darbojošs MySQL serveris.
+- Izveidota datubāze `student_manager`.
+
+### Instalēšana
+
+PowerShell terminālī projekta mapē izveido un aktivizē virtuālo vidi:
+
+```powershell
+python -m venv venv
+venv\Scripts\Activate.ps1
+```
+
+Instalē projekta atkarības:
+
+```powershell
+pip install -r requirements.txt
+```
+
+### Datubāzes konfigurācija
+
+Pirms palaišanas atver `config.py` un norādi sava MySQL servera iestatījumus:
+
+```python
+DB_HOST = "localhost"
+DB_USER = "root"
+DB_PASSWORD = "TAVA_MYSQL_PAROLE"
+DB_NAME = "student_manager"
+```
+
+MySQL Workbench vai citā MySQL klientā izveido datubāzi:
+
+```sql
+CREATE DATABASE student_manager;
+```
+
+Pēc tam projekta mapē izpildi visas migrācijas:
+
+```powershell
+alembic upgrade head
+```
+
+### Programmas palaišana
+
+```powershell
+python main.py
+```
+
+Programma ļauj pievienot, apskatīt, atjaunināt un dzēst studentus. Darbību žurnāls tiek saglabāts failā `student_manager.log`.
+
+### Testu palaišana
+
+Validācijas unit testus var palaist bez MySQL savienojuma:
+
+```powershell
+python -m unittest -v test_validators.py
+```
+
 ## Projekta izstrādes vēsture
 
 1. **Initial commit** - izveidots repozitorijas sākotnējais stāvoklis.
