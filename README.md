@@ -65,17 +65,17 @@ python -m unittest -v test_validators.py
 
 ## Projekta izstrādes vēsture
 
-1. **Initial commit** - izveidots repozitorijas sākotnējais stāvoklis.
+1. **Initial repository commit** - izveidots repozitorijas sākotnējais stāvoklis.
 2. **Initial project structure** - izveidota projekta pamatstruktūra un nepieciešamie sākotnējie faili.
 3. **Add virtual environment and dependencies** - pievienota virtuālā Python vide un projekta atkarību saraksts.
 4. **Add database configuration** - pievienoti MySQL datubāzes savienojuma konfigurācijas iestatījumi.
 5. **Add MySQL connection test** - pārbaudīts, vai programma var izveidot savienojumu ar MySQL datubāzi.
-6. **Initialize database migrations** - projektam pievienota Alembic migrāciju sistēma datubāzes struktūras pārvaldībai.
+6. **Set up database migrations** - projektam pievienota Alembic migrāciju sistēma datubāzes struktūras pārvaldībai.
 7. **Create students table migration** - izveidota migrācija `students` tabulai ar ID, vārda un e-pasta laukiem.
 8. **Add age column migration** - izveidota migrācija studentu vecuma lauka pievienošanai.
 9. **Add student management menu** - izveidota interaktīva izvēlne studentu pievienošanai, apskatei un programmas aizvēršanai.
 10. **Complete second migration** - pabeigta un papildināta datubāzes migrācija ar studentu vecuma lauku.
-11. **Add GitHub Actions automation** - pievienota automātiska projekta pārbaude, izmantojot GitHub Actions.
+11. **Automate checks with GitHub Actions** - pievienota automātiska projekta pārbaude, izmantojot GitHub Actions.
 12. **Add delete student feature** - pievienota iespēja dzēst studentu pēc tā ID.
 13. **Improve student display** - uzlabots studentu saraksta attēlojums ar virsrakstiem un sakārtotu tabulas formātu.
 14. **Age error handeling** - pievienota vecuma ievades pārbaude, lai nederīgas vērtības netiktu saglabātas kā skaitlis.
@@ -85,7 +85,7 @@ python -m unittest -v test_validators.py
 18. **README.md dokuments** - papildināts apraksts.
 19. **Email Validation** - pievienota e-pasta pārbaude, kas pieprasa `@` simbola esamību.
 20. **database fix** - izlabota datubāzes konfigurācija.
-21. **Name validation** - pievienota vārda pārbaude, kas nepieļauj tukšu ievadi.
+21. **Validate student names** - pievienota vārda pārbaude, kas nepieļauj tukšu ievadi.
 22. **Delete Validation** - pievienots apstiprinājums pirms studenta dzēšanas.
 23. **Duplicate email checking.** - pievienota pārbaude, kas neļauj reģistrēt jau izmantotu e-pasta adresi.
 24. **Student update feature** - pievienota iespēja mainīt esoša studenta vārdu, e-pastu un vecumu.
@@ -94,6 +94,6 @@ python -m unittest -v test_validators.py
 27. **Database connection error handling** - pievienota MySQL savienojuma kļūdu apstrāde ar saprotamu paziņojumu.
 28. **Add unit tests for validation** - pievienoti unit testi vārda, e-pasta un vecuma validācijas pārbaudei.
 29. **Handle invalid menu choice** - pievienota kļūdas apstrāde nederīgai izvēlnes izvēlei.
-30. **Update README setup instructions** - README papildināts ar instalēšanas, datubāzes konfigurācijas, migrāciju, palaišanas un testu instrukcijām.
+30. **Refresh setup documentation** - README papildināts ar instalēšanas, datubāzes konfigurācijas, migrāciju, palaišanas un testu instrukcijām.
 
 
