@@ -1,6 +1,14 @@
 # uni
 Programmatūras ieviešanas un uzturēšanas dzīves cikls un procesu automatizācija
 
+## Usage
+
+Run the Git practice program with:
+
+```powershell
+python src/main.py
+```
+
 ## Projekta palaišana
 
 ### Priekšnosacījumi
