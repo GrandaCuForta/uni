@@ -1,2 +1,2 @@
-print("Hello Git")
-print("Version 2")
+name = input("Name: ")
+print(f"Hello {name}")
