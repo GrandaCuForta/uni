@@ -1,7 +1,7 @@
 # uni
 Programmatūras ieviešanas un uzturēšanas dzīves cikls un procesu automatizācija
 
-## Usage
+## Usage - Main team update
 
 Run the Git practice program with:
 
