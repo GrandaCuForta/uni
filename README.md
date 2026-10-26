@@ -1,6 +1,35 @@
 # uni
 Programmatūras ieviešanas un uzturēšanas dzīves cikls un procesu automatizācija
 
+## Project description
+
+This project is a command-line student management application. It is designed
+to demonstrate software implementation, maintenance, database integration, and
+process automation practices.
+
+The project is written in **Python** and uses **MySQL** to store student
+records. Database schema changes are managed with **Alembic migrations**, and
+database credentials are loaded from environment variables instead of being
+stored in the source code.
+
+The application can:
+
+- Add new students with a name, email address, and age.
+- Display all students stored in the database.
+- Update an existing student's details.
+- Delete a student after confirmation.
+- Return to the main menu from the update or delete sections by entering
+  `q`, `quit`, or `exit`.
+- Validate names, email addresses, and ages before saving data.
+- Prevent duplicate email addresses.
+- Log important application actions and errors to `student_manager.log`.
+- Run automated unit and database integration tests.
+
+The project uses a simple interactive terminal menu. It is suitable for
+learning basic Python programming, CRUD operations, relational databases,
+input validation, migrations, logging, testing, and secure configuration
+management.
+
 # Git practice
 
 ## Usage - Team update
