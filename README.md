@@ -100,6 +100,20 @@ python main.py
 
 Programma ļauj pievienot, apskatīt, atjaunināt un dzēst studentus. Darbību žurnāls tiek saglabāts failā `student_manager.log`.
 
+### Grafiskā saskarne
+
+Projektam ir arī grafiska Tkinter saskarne ar logu, tabulu, pogām un
+ziņojumiem par kļūdām. Tā izmanto to pašu MySQL datubāzi un `.env`
+konfigurāciju:
+
+```powershell
+python gui.py
+```
+
+Grafiskajā saskarnē var pievienot, apskatīt, atjaunināt, dzēst un pārlādēt
+studentu ierakstus. Lai atjauninātu vai dzēstu studentu, vispirms izvēlies to
+tabulā.
+
 ### Testu palaišana
 
 Validācijas unit testus var palaist bez MySQL savienojuma:
@@ -107,6 +121,20 @@ Validācijas unit testus var palaist bez MySQL savienojuma:
 ```powershell
 python -m unittest -v test_validators.py
 ```
+
+Pilno studentu izveides, nolasīšanas, atjaunināšanas, dublikāta e-pasta,
+dzēšanas un dzēšanas pārbaudes testu var palaist tikai atsevišķā testa
+datubāzē. `.env` failā norādi testa datubāzi un pirms testa iestati:
+
+```powershell
+$env:RUN_DB_TESTS = "1"
+$env:TEST_DB_NAME = "student_manager_test"
+python -m unittest -v test_student_database.py
+```
+
+Testa datubāzei jābūt izveidotai un jāizmanto tā pati migrāciju struktūra kā
+`student_manager` datubāzei. Tests izveido `students` tabulu, ja tā vēl
+neeksistē, un pēc katra testa izdzēš testa ierakstus.
 
 ## Projekta izstrādes vēsture
 
@@ -140,4 +168,3 @@ python -m unittest -v test_validators.py
 28. **Add unit tests for validation** - pievienoti unit testi vārda, e-pasta un vecuma validācijas pārbaudei.
 29. **Handle invalid menu choice** - pievienota kļūdas apstrāde nederīgai izvēlnes izvēlei.
 30. **Update README setup instructions** - README papildināts ar instalēšanas, datubāzes konfigurācijas, migrāciju, palaišanas un testu instrukcijām.
-
