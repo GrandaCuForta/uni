@@ -36,14 +36,20 @@ pip install -r requirements.txt
 
 ### Datubāzes konfigurācija
 
-Pirms palaišanas atver `config.py` un norādi sava MySQL servera iestatījumus:
+Datubāzes iestatījumi tiek nolasīti no vides mainīgajiem, tāpēc paroles un citi
+savienojuma dati nav jāieraksta `config.py`. Izveido lokālu `.env` failu,
+balstoties uz [`.env.example`](.env.example), vai iestati mainīgos PowerShell
+sesijā:
 
-```python
-DB_HOST = "localhost"
-DB_USER = "root"
-DB_PASSWORD = "TAVA_MYSQL_PAROLE"
-DB_NAME = "student_manager"
+```powershell
+$env:DB_HOST = "localhost"
+$env:DB_USER = "your_mysql_user"
+$env:DB_PASSWORD = "your_mysql_password"
+$env:DB_NAME = "student_manager"
 ```
+
+`.env` ir iekļauts `.gitignore`, tāpēc tas netiks pievienots repozitorijam.
+Nekad nepublicē paroles vai citus noslēpumus Git repozitorijā.
 
 MySQL Workbench vai citā MySQL klientā izveido datubāzi:
 
@@ -105,5 +111,4 @@ python -m unittest -v test_validators.py
 28. **Add unit tests for validation** - pievienoti unit testi vārda, e-pasta un vecuma validācijas pārbaudei.
 29. **Handle invalid menu choice** - pievienota kļūdas apstrāde nederīgai izvēlnes izvēlei.
 30. **Update README setup instructions** - README papildināts ar instalēšanas, datubāzes konfigurācijas, migrāciju, palaišanas un testu instrukcijām.
-
 
