@@ -134,7 +134,12 @@ while true:
         print("-" * 72)
 
     elif choice == "3":
-        student_id = input("Enter student ID: ")
+        student_id = input("Enter student ID (or q to return): ").strip()
+        if student_id.lower() in ("q", "quit", "exit"):
+            print("Returning to the main menu.")
+            logger.info("Student deletion cancelled")
+            continue
+
         confirmation = input("Are you sure you want to delete this student? (y/n): ")
         if confirmation.lower() in ("y", "yes"):
             delete_student(student_id)
@@ -143,7 +148,11 @@ while true:
             logger.info("Student deletion cancelled: ID %s", student_id)
 
     elif choice == "4":
-        student_id = input("Enter student ID: ")
+        student_id = input("Enter student ID (or q to return): ").strip()
+        if student_id.lower() in ("q", "quit", "exit"):
+            print("Returning to the main menu.")
+            logger.info("Student update cancelled")
+            continue
 
         while True:
             name = input("Enter new student name: ").strip()
