@@ -1,13 +1,3 @@
-def validate_name(name):
-	return bool(name.strip())
+from app.validators import validate_age, validate_email, validate_name
 
-
-def validate_email(email):
-	return "@" in email.strip()
-
-
-def validate_age(age):
-	try:
-		return 0 <= int(age) <= 120
-	except (TypeError, ValueError):
-		return False
+__all__ = ["validate_age", "validate_email", "validate_name"]

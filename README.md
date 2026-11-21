@@ -3,7 +3,7 @@ Programmatūras ieviešanas un uzturēšanas dzīves cikls un procesu automatiz�
 
 ## Project description
 
-This project is a command-line student management application. It is designed
+This project is a desktop student management application. It is designed
 to demonstrate software implementation, maintenance, database integration, and
 process automation practices.
 
@@ -12,15 +12,40 @@ records. Database schema changes are managed with **Alembic migrations**, and
 database credentials are loaded from environment variables instead of being
 stored in the source code.
 
+The main application is a graphical Tkinter program. The code is organized
+into an `app` package so the interface, database queries, and validation rules
+are separate:
+
+```text
+app/
+├── database.py   # MySQL connection and student repository
+├── gui.py        # Tkinter interface
+└── validators.py # Input validation
+config.py         # Environment-based configuration
+gui.py            # Simple GUI launcher
+main.py           # Terminal application
+migrations/       # Database schema migrations
+tests/            # Automated tests
+docs/             # Project notes and text templates
+logs/             # Local application logs
+```
+
+The root launcher files and configuration files stay in the project root so
+Python, Alembic, and the setup instructions can find them without extra path
+configuration.
+
 The application can:
 
-- Add new students with a name, email address, and age.
+- Add new students with a name, email address, date of birth, study program,
+  phone number, and enrollment date.
 - Display all students stored in the database.
 - Update an existing student's details.
 - Delete a student after confirmation.
-- Return to the main menu from the update or delete sections by entering
-  `q`, `quit`, or `exit`.
-- Validate names, email addresses, and ages before saving data.
+- Open a detailed student profile.
+- Search by name, email, study program, or phone number.
+- Sort records by clicking a table heading.
+- Navigate records with pagination.
+- Validate names, email addresses, dates, study programs, and phone numbers.
 - Prevent duplicate email addresses.
 - Log important application actions and errors to `student_manager.log`.
 - Run automated unit and database integration tests.
@@ -92,13 +117,18 @@ Pēc tam projekta mapē izpildi visas migrācijas:
 alembic upgrade head
 ```
 
+Alembic izmanto tos pašus `DB_HOST`, `DB_USER`, `DB_PASSWORD` un `DB_NAME`
+mainīgos no `.env`, ko izmanto programma. `alembic.ini` vairs nav jāieliek
+parole.
+
 ### Programmas palaišana
 
 ```powershell
 python main.py
 ```
 
-Programma ļauj pievienot, apskatīt, atjaunināt un dzēst studentus. Darbību žurnāls tiek saglabāts failā `student_manager.log`.
+Programma ļauj pievienot, apskatīt, atjaunināt un dzēst studentus. Darbību
+žurnāls tiek saglabāts failā `student_manager.log`.
 
 ### Grafiskā saskarne
 
@@ -110,16 +140,22 @@ konfigurāciju:
 python gui.py
 ```
 
-Grafiskajā saskarnē var pievienot, apskatīt, atjaunināt, dzēst un pārlādēt
-studentu ierakstus. Lai atjauninātu vai dzēstu studentu, vispirms izvēlies to
-tabulā.
+Grafiskajā saskarnē var pievienot, apskatīt, atjaunināt, dzēst, meklēt, kārtot,
+profilā apskatīt un pārlādēt studentu ierakstus. Lai atjauninātu, dzēstu vai
+atvērtu profilu, vispirms izvēlies studentu tabulā. Datumi jāievada formātā
+`DD/MM/YYYY`.
+
+`main.py` un `gui.py` abi palaiž grafisko lietotni. Vecā termināļa
+implementācija ir saglabāta `app/legacy_cli.py` tikai vēsturei un vairs nav
+aktīvā palaišanas metode, jo datubāzes struktūra tagad izmanto dzimšanas
+datumu, nevis vecumu.
 
 ### Testu palaišana
 
 Validācijas unit testus var palaist bez MySQL savienojuma:
 
 ```powershell
-python -m unittest -v test_validators.py
+python -m unittest -v tests.test_validators
 ```
 
 Pilno studentu izveides, nolasīšanas, atjaunināšanas, dublikāta e-pasta,
@@ -129,7 +165,7 @@ datubāzē. `.env` failā norādi testa datubāzi un pirms testa iestati:
 ```powershell
 $env:RUN_DB_TESTS = "1"
 $env:TEST_DB_NAME = "student_manager_test"
-python -m unittest -v test_student_database.py
+python -m unittest -v tests.test_student_database
 ```
 
 Testa datubāzei jābūt izveidotai un jāizmanto tā pati migrāciju struktūra kā
@@ -168,3 +204,10 @@ neeksistē, un pēc katra testa izdzēš testa ierakstus.
 28. **Add unit tests for validation** - pievienoti unit testi vārda, e-pasta un vecuma validācijas pārbaudei.
 29. **Handle invalid menu choice** - pievienota kļūdas apstrāde nederīgai izvēlnes izvēlei.
 30. **Update README setup instructions** - README papildināts ar instalēšanas, datubāzes konfigurācijas, migrāciju, palaišanas un testu instrukcijām.
+31. **Complete GUI student interface** - izveidota pilna Tkinter grafiskā saskarne studenta ierakstu pārvaldībai.
+32. **Modularize application code** - kods sadalīts `app` pakotnē: datubāzes piekļuve, grafiskā saskarne un validācija atdalīti atsevišķos moduļos.
+33. **Expand student data model** - vecuma lauks aizstāts ar dzimšanas datumu, studiju programmu, tālruņa numuru un uzņemšanas datumu.
+34. **Add student profile and search** - pievienots detalizēts studenta profils, meklēšana un ierakstu kārtošana pēc tabulas virsrakstiem.
+35. **Add pagination and GUI tests** - pievienota lapošana studenta sarakstā un automātiski testi GUI ierakstu izveidei un atjaunināšanai.
+36. **Secure repository configuration** - datubāzes un virtuālās vides faili izslēgti no Git izsekošanas, bet pievienota droša `.env.example` konfigurācijas veidne.
+37. **Clean repository and final documentation** - noņemtas palīgfailu parādības, atjaunināts README, projekta struktūra un palaišanas instrukcijas.
