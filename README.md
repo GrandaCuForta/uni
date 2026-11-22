@@ -21,12 +21,11 @@ app/
 ├── database.py   # MySQL connection and student repository
 ├── gui.py        # Tkinter interface
 └── validators.py # Input validation
+archive/          # Legacy files and Git practice kept for reference
 config.py         # Environment-based configuration
-gui.py            # Simple GUI launcher
-main.py           # Terminal application
+main.py           # Application launcher
 migrations/       # Database schema migrations
 tests/            # Automated tests
-docs/             # Project notes and text templates
 logs/             # Local application logs
 ```
 
@@ -62,7 +61,7 @@ management.
 Run the Git practice program with:
 
 ```powershell
-python src/main.py
+python archive/git_practice/main.py
 ```
 
 ## Projekta palaišana
@@ -132,23 +131,18 @@ Programma ļauj pievienot, apskatīt, atjaunināt un dzēst studentus. Darbību
 
 ### Grafiskā saskarne
 
-Projektam ir arī grafiska Tkinter saskarne ar logu, tabulu, pogām un
+Projektam ir grafiska Tkinter saskarne ar logu, tabulu, pogām un
 ziņojumiem par kļūdām. Tā izmanto to pašu MySQL datubāzi un `.env`
-konfigurāciju:
-
-```powershell
-python gui.py
-```
+konfigurāciju. Palaišanai projekta mapē izmanto `python main.py`.
 
 Grafiskajā saskarnē var pievienot, apskatīt, atjaunināt, dzēst, meklēt, kārtot,
 profilā apskatīt un pārlādēt studentu ierakstus. Lai atjauninātu, dzēstu vai
 atvērtu profilu, vispirms izvēlies studentu tabulā. Datumi jāievada formātā
 `DD/MM/YYYY`.
 
-`main.py` un `gui.py` abi palaiž grafisko lietotni. Vecā termināļa
-implementācija ir saglabāta `app/legacy_cli.py` tikai vēsturei un vairs nav
-aktīvā palaišanas metode, jo datubāzes struktūra tagad izmanto dzimšanas
-datumu, nevis vecumu.
+`main.py` ir galvenais grafiskās lietotnes palaišanas fails. Vecie palaišanas
+faili, termināļa implementācija un projekta piezīmes ir sagrupēti `archive/`
+mapē tikai vēstures saglabāšanai.
 
 ### Testu palaišana
 
